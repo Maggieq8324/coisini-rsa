@@ -1,0 +1,78 @@
+{
+  "_from": "jsencrypt@^3.2.0",
+  "_id": "jsencrypt@3.2.0",
+  "_inBundle": false,
+  "_integrity": "sha1-CSQqq/GYQWXc12mP5u0WO+d8Bfg=",
+  "_location": "/jsencrypt",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "jsencrypt@^3.2.0",
+    "name": "jsencrypt",
+    "escapedName": "jsencrypt",
+    "rawSpec": "^3.2.0",
+    "saveSpec": null,
+    "fetchSpec": "^3.2.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.nlark.com/jsencrypt/download/jsencrypt-3.2.0.tgz?cache=0&sync_timestamp=1619388207670&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjsencrypt%2Fdownload%2Fjsencrypt-3.2.0.tgz",
+  "_shasum": "09242aabf1984165dcd7698fe6ed163be77c05f8",
+  "_spec": "jsencrypt@^3.2.0",
+  "_where": "F:\\GIT\\pms_code\\yn_develop\\ap-h5",
+  "author": {
+    "name": "Travis Tidwell",
+    "email": "travis@form.io"
+  },
+  "bugs": {
+    "url": "http://github.com/travist/jsencrypt/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Travis Tidwell",
+      "email": "travis@form.io",
+      "url": "http://github.com/travist"
+    },
+    {
+      "name": "Antonio",
+      "url": "https://github.com/zoloft"
+    },
+    {
+      "name": "Julio",
+      "url": "https://github.com/jmgaya"
+    }
+  ],
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A Javascript library to perform OpenSSL RSA Encryption, Decryption, and Key Generation.",
+  "devDependencies": {
+    "typescript": "^4.2.4",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "homepage": "http://www.travistidwell.com/jsencrypt",
+  "license": "MIT",
+  "main": "bin/jsencrypt.js",
+  "module": "lib/index.js",
+  "name": "jsencrypt",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/travist/jsencrypt.git"
+  },
+  "scripts": {
+    "build": "npm run build:dev && npm run build:prod",
+    "build:dev": "tsc && tsc --project tsconfig-def.json && webpack",
+    "build:prod": "tsc && tsc --project tsconfig-def.json && webpack --config webpack.prod.js",
+    "serve": "bundle exec jekyll server --config _config.build.yml"
+  },
+  "types": "lib/index.d.ts",
+  "version": "3.2.0"
+}
