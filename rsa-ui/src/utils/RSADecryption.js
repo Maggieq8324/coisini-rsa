@@ -26,7 +26,7 @@ export const RSADECRY = {
     },
     /**
      * 公钥分段解密
-     * @returns {boolean|undefined}
+     * @returns {string}
      * @param val
      */
     decryptLongByPublicKey: function (val = '') {
