@@ -2,12 +2,13 @@ package com.coisini.rsa.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.ArrayUtils;
-
 import javax.crypto.Cipher;
+import java.io.ByteArrayOutputStream;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.security.spec.EncodedKeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
@@ -163,7 +164,7 @@ public class RSAUtils {
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, privateKey);
 
-        byte[] data = content.getBytes("UTF-8");
+        byte[] data = URLEncoder.encode(content, "UTF-8").getBytes("UTF-8");
         // 加密时超过117字节就报错。为此采用分段加密的办法来加密
         byte[] enBytes = null;
         for (int i = 0; i < data.length; i += 117) {
@@ -186,12 +187,27 @@ public class RSAUtils {
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
         byte[] data =  Base64.getDecoder().decode(content);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < data.length; i += 128) {
-            byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i, i + 128));
-            sb.append(new String(doFinal));
+
+        // 返回UTF-8编码的解密信息
+        int inputLen = data.length;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        int offSet = 0;
+        byte[] cache;
+        int i = 0;
+        // 对数据分段解密
+        while (inputLen - offSet > 0) {
+            if (inputLen - offSet > 128) {
+                cache = cipher.doFinal(data, offSet, 128);
+            } else {
+                cache = cipher.doFinal(data, offSet, inputLen - offSet);
+            }
+            out.write(cache, 0, cache.length);
+            i++;
+            offSet = i * 128;
         }
-        return sb.toString();
+        byte[] decryptedData = out.toByteArray();
+        out.close();
+        return URLDecoder.decode(new String(decryptedData, "UTF-8"));
     }
 
     public static void main(String[] args) {

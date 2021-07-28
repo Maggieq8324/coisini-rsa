@@ -27,7 +27,7 @@ export const RSADECRY = {
     /**
      * 公钥分段解密
      * @returns {string}
-     * @param val
+     * @param val 要解密的数据 先转为byte数组在进行解码
      */
     decryptLongByPublicKey: function (val = '') {
         if(val === ''){
@@ -36,11 +36,11 @@ export const RSADECRY = {
         let encrypt = new JSEncrypt()
         encrypt.setPublicKey(PUBLICKEY) // 设置公钥
 
-        let decryptStr = encrypt.decryptLong(base64ToArrayBuffer(val)); // val要解密的数据 先转为byte数组在进行解码
+        // 后端使用encodeURIComponent 进行编码，前端解密后使用decodeURIComponent解码
+        let decryptStr = decodeURIComponent(encrypt.decryptLong(base64ToArrayBuffer(val)));
 
         return decryptStr ? decryptStr : val;
     }
-
 
 }
 
