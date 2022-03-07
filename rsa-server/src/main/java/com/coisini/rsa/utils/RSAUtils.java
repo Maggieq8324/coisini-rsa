@@ -231,6 +231,7 @@ public class RSAUtils {
             Map<String,Object> map = new HashMap<>();
             map.put("name", "Cosini");
             map.put("phone", "13888888888");
+            map.put("explain", "加解密失败或中文乱码请仔细查看demo");
             String content = JSONObject.toJSONString(map);
 
             // 密文

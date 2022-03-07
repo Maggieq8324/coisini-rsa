@@ -53,7 +53,7 @@ export default {
     console.log("decryptDataByPublicKey: ", decryptDataByPublicKey)
 
     console.log("===================")
-    let encryptStr = 'LfQFzBVRelSjnohshZlMvTUPsfdaD9t7FEreaAKop5Pf4X33exYMykBS12XCgnMP+GtO08ir5qmsnwVU5iP/lHMlTBSkWiGX16zFV/pmwQF8OY62HrhzXZn0gSu1rIgPKIowQ2W254uYPHDIIxvWJB/dNmeeqrgc5JxDdLVEuZU=';
+    let encryptStr = 'Guihe55ygtchHRFhGaK/T/y4grsPkC+Xa4DhHUw7MQeIDMc1SUZsV/VJ7D5yDbjIjfZbygTkWhWXLF4fJdgooAClzp5Lbaqn8FrMsBHj2oTFgJ3IFGBfiWvBgT21xKgbRHOBCIlHLHRucZDNW4XdgTN6iFRWpHP5xal47M3TAthsk3rlpPO7QBsv/dznmLfkcvo5gYepOCBzj7tKdxyEhu+1GUUqgIHIC1mGTiCkDoAXocfbpObEMWRhAzpHdpkR5nH00Kn7iVKKdgcKStyBqCW1wTx4lURrd32yGUqmkIWGpFi7lwhitL1d3oSzz2UZFke/HgHVIYBGoiVPizEc8g==';
     let decryptLongByPublicKey = RSADECRY.decryptLongByPublicKey(encryptStr);
     console.log("decryptLongByPublicKey: ", decryptLongByPublicKey);
   }
